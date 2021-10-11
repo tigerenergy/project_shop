@@ -52,8 +52,8 @@ function App() {
           </div>
         </div>
         </Route>
-        <Route path="/detail">
-          <Details></Details>
+        <Route path="/detail/:id">
+          <Details guitar={guitar}></Details>
         </Route>
         </Switch> 
     </div>

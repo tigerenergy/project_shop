@@ -6,6 +6,12 @@ a {
   text-decoration: none;
 }
 
+button
+{
+  margin:1vw;
+}
+
+
 .App {
   text-align: center;
 }
@@ -87,4 +93,9 @@ a {
 .me-auto
 {
   text-decoration: none;
+}
+
+.mt-4
+{
+  margin-bottom: 8vh;
 }
