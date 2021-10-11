@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
-import { Navbar, Container, Nav, NavDropdown, Button}  from 'react-bootstrap'
+import { Navbar, Container, Nav, NavDropdown, Button }  from 'react-bootstrap'
+import Data from './data'
 function App() {
+
+  let [guitar , guitarChange] = useState(Data)
+
   return (
     <div className="App">
         <Navbar bg="light" expand="lg">
@@ -24,7 +28,7 @@ function App() {
           </Container>
         </Navbar>
           <div className="jumbotron">
-            <h1>50% SALE</h1>
+            <h1>20% SALE</h1>
               <p>FENDER MUSICAL INSTRUMENTS CORPORATION
                  THE WORLD'S LEADING GUITAR MANUFACTURER</p>
                 <p>
@@ -33,25 +37,27 @@ function App() {
         </div>
         <div className="container">
           <div className="row">
-            <div className="col-md-4">
-              <img src="https://www.fmicassets.com/Damroot/GuitarVertDesktopJpg/10001/0140262326_fen_ins_frt_1_rr.jpg" height="70%" alt="" />
-              <h4>상품명</h4>
-              <p>상품설명 & 가격</p>
-            </div>
-            <div className="col-md-4">
-              <img src="https://www.fmicassets.com/Damroot/GuitarVertDesktopJpg/10001/0378051566_sqr_ins_frt_1_rr.jpg" height="70%" alt="" />
-              <h4>상품명</h4>
-              <p>상품설명 & 가격</p>
-            </div>
-            <div className="col-md-4">
-              <img src="https://www.fmicassets.com/Damroot/GuitarVertDesktopJpg/10001/0378003502_sqr_ins_frt_1_rr.jpg" height="70%" alt="" />
-              <h4>상품명</h4>
-              <p>상품설명 & 가격</p>
-            </div>
+            {
+              guitar.map((value, index)=>
+              {
+                return  <Card guitar={guitar[index]} index={index} key={index} />
+              })
+            }
           </div>
         </div>
     </div>
   )
 }
 
-export default App;
+const Card = (props) =>
+{
+  return(
+        <div className="col-md-4">
+          <img src={props.guitar.src} height="70%" alt="팬더기타" />
+          <h4>{props.guitar.title}</h4>
+          <p>{props.guitar.content}</p>
+          <p><strong>{props.guitar.price}</strong></p>
+        </div>
+  )
+}
+  export default App;

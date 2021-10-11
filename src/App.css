@@ -48,12 +48,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 100vw;
   height: 40vh;
   background-image: url(https://stuff.fendergarage.com/images/9/N/R/AMLUXE-EMEA-Feedcard@2x.jpg);
   background-repeat: none;
   background-size: cover;
   font-family: 'Noto Sans', sans-serif;
+  text-align: center;
 }
 
 .jumbotron h1
@@ -63,3 +63,17 @@
   -webkit-text-stroke: 2px white;
 }
 
+.row
+{
+  margin-top: 10vh;
+}
+
+.col-md-4 h4
+{
+  margin-top: 5vh;
+}
+
+.col-md-4 p
+{
+  margin-top: 2vh;
+}
