@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,700&display=swap');
 
 
+a {
+  color: #8f8f8f;
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
 }
@@ -77,4 +82,9 @@
 .col-md-4 p
 {
   margin-top: 2vh;
+}
+
+.me-auto
+{
+  text-decoration: none;
 }
