@@ -34,7 +34,7 @@ function App() {
         <Switch>
         <Route exact path="/">
         <div className="jumbotron">
-            <h1>30% SALE</h1>
+            <h1>50% SALE</h1>
               <p>FENDER MUSICAL INSTRUMENTS CORPORATION
                  THE WORLD'S LEADING GUITAR MANUFACTURER</p>
                 <p>
