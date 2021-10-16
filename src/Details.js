@@ -21,6 +21,9 @@ const Details = (props) =>
       <p>{findIndex.price}</p>
       <button className="btn btn-danger">주문하기</button> 
       <button className="btn btn-primary" onClick={()=>{history.push('/')}}>뒤로가기</button> 
+      <div className="my-alert">
+        <div className="p">재고가 얼마 남지 않았습니다.</div>
+      </div>
     </div>
   </div>
 </div> 
