@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import './App.css';
 import { Navbar, Container, Nav, NavDropdown, Button }  from 'react-bootstrap'
 import Data from './data'
-import Details from './Details'
+import Details from './Detail'
 import Card from './Card'
+
 
 import { Link, Route, Switch } from 'react-router-dom'
 function App() {
