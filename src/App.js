@@ -51,6 +51,7 @@ function App() {
               })
             }
           </div>
+          <button className="btn btn-primary">더보기</button>
         </div>
         </Route>
         <Route path="/detail/:id">
