@@ -38,9 +38,12 @@ const Details = (props) =>
       <h4 className="pt-5">{findIndex.title}</h4>
       <p>{findIndex.content}</p>
       <p>{findIndex.price}</p>
-      <button className="btn btn-danger">주문하기</button> 
+      <Inventory Inventory={props.Inventory}></Inventory>
+      <button className="btn btn-danger" onClick={()=>
+        {
+          props.InventoryChange([9,11,12])
+        }}>주문하기</button> 
       <button className="btn btn-primary" onClick={()=>{history.push('/')}}>뒤로가기</button>
-      <input onChange={(event)=>{inputDataChange(event.target.value)}}/>
       {
         alert === true
         ?(<div className="alert">
@@ -51,6 +54,13 @@ const Details = (props) =>
     </div>
   </div>
 </div> 
+  )
+}
+
+const Inventory = (props) =>
+{
+  return(
+    <p>재고: {props.Inventory[0]}</p>
   )
 }
 
