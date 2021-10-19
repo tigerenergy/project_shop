@@ -11,6 +11,7 @@ import { Link, Route, Switch } from 'react-router-dom'
 function App() {
 
   let [guitar , guitarChange] = useState(Data)
+  let [Inventory, InventoryChange] = useState([10,11,12])
 
   return (
     <div className="App">
@@ -65,7 +66,7 @@ function App() {
         </div>
         </Route>
         <Route path="/detail/:id">
-          <Details guitar={guitar}></Details>
+          <Details guitar={guitar} Inventory={Inventory} InventoryChange={InventoryChange}></Details>
         </Route>
         </Switch> 
     </div>
