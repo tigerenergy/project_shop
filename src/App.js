@@ -60,7 +60,7 @@ function App() {
                 guitarChange([...guitar , ...result.data])
               })
               .catch(()=>{
-                console.log('실패함')
+                console.log('실패함zx')
               })
             }}>더보기</button>
         </div>
