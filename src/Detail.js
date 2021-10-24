@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import './Detail.css'
+import {inventoryContext} from './App'
 const Details = (props) =>
 { 
   useEffect(()=>
@@ -18,7 +19,7 @@ const Details = (props) =>
   //  조건문 비어 있을 경우 한번만 실행 
   ])
 
-
+  let inventory = useContext(inventoryContext)
   let [alert, alertChange] = useState(true)
   let [inputData, inputDataChange] = useState()
   let { id } = useParams()
@@ -38,10 +39,10 @@ const Details = (props) =>
       <h4 className="pt-5">{findIndex.title}</h4>
       <p>{findIndex.content}</p>
       <p>{findIndex.price}</p>
-      <Inventory Inventory={props.Inventory}></Inventory>
+      <Inventory inventory={props.inventory}></Inventory>
       <button className="btn btn-danger" onClick={()=>
         {
-          props.InventoryChange([9,11,12])
+          props.inventoryChange([9,11,12])
         }}>주문하기</button> 
       <button className="btn btn-primary" onClick={()=>{history.push('/')}}>뒤로가기</button>
       {
@@ -58,9 +59,9 @@ const Details = (props) =>
 }
 
 const Inventory = (props) =>
-{
+{ 
   return(
-    <p>재고: {props.Inventory[0]}</p>
+    <p>재고: {props.inventory[0]}</p>
   )
 }
 

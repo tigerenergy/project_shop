@@ -1,17 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState , useContext} from 'react'
 import './App.css';
 import { Navbar, Container, Nav, NavDropdown, Button }  from 'react-bootstrap'
 import Data from './data'
 import Details from './Detail'
-import Card from './Card'
 import axios from 'axios'
-
-
 import { Link, Route, Switch } from 'react-router-dom'
+
+export let inventoryContext = React.createContext()
+
 function App() {
 
   let [guitar , guitarChange] = useState(Data)
-  let [Inventory, InventoryChange] = useState([10,11,12])
+  let [inventory, inventoryChange] = useState([9,10,11])
 
   return (
     <div className="App">
@@ -45,6 +45,8 @@ function App() {
             </p>
         </div>
         <div className="container">
+
+          <inventoryContext.Provider value={inventory}>
           <div className="row">
             {
               guitar.map((value, index)=>
@@ -52,7 +54,9 @@ function App() {
                 return  <Card guitar={guitar[index]} index={index} key={index} />
               })
             }
-          </div>
+          </div>          
+          </inventoryContext.Provider>
+
           <button className="btn btn-primary" onClick={()=>
             {
               axios.get('https://codingapple1.github.io/shop/data2.json')
@@ -65,13 +69,30 @@ function App() {
             }}>더보기</button>
         </div>
         </Route>
+        <inventoryContext.Provider value={inventory}>
         <Route path="/detail/:id">
-          <Details guitar={guitar} Inventory={Inventory} InventoryChange={InventoryChange}></Details>
+          <Details guitar={guitar} inventory={inventory} inventoryChange={inventoryChange}></Details>
         </Route>
+        </inventoryContext.Provider>
         </Switch> 
     </div>
   )
 }
 
+
+  const Card = (props) =>
+  { 
+
+    let inventory = useContext(inventoryContext)
+    return(
+          <div className="col-md-4">
+            <img src={props.guitar.src} height="70%" alt="팬더기타" />
+            <h4>{props.guitar.title}</h4>
+            <p>{props.guitar.content}</p>
+            <p><strong>{props.guitar.price}</strong></p>
+            {inventory[1]}
+          </div>
+    )
+  }
 
   export default App;
