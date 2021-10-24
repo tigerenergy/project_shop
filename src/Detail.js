@@ -61,10 +61,10 @@ const Details = (props) =>
 
   <Nav className="mt-10" variant="tabs" defaultActiveKey="link-0">
   <Nav.Item>
-    <Nav.Link href="link-0" onClick={()=>{controllersChange(false); clickTabChange(0)}}>Active</Nav.Link>
+    <Nav.Link href="link-0" onClick={()=>{controllersChange(false); clickTabChange(0)}}>상품설명</Nav.Link>
   </Nav.Item>
   <Nav.Item>
-    <Nav.Link eventKey="link-1" onClick={()=>{controllersChange(false); clickTabChange(1)}}>Option 2</Nav.Link>
+    <Nav.Link eventKey="link-1" onClick={()=>{controllersChange(false); clickTabChange(1)}}>배송정보</Nav.Link>
   </Nav.Item>
 </Nav>
 <CSSTransition in={controllers} classNames="wow" timeout={500}>
