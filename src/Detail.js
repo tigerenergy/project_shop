@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import { Nav }  from 'react-bootstrap'
 import './Detail.css'
 import {inventoryContext} from './App'
+import {CSSTransition} from 'react-transition-group';
 const Details = (props) =>
 { 
   useEffect(()=>
@@ -18,7 +20,9 @@ const Details = (props) =>
   [
   //  조건문 비어 있을 경우 한번만 실행 
   ])
-
+  
+  let [controllers, controllersChange] = useState(false)
+  let [clickTab, clickTabChange] = useState(0)
   let inventory = useContext(inventoryContext)
   let [alert, alertChange] = useState(true)
   let [inputData, inputDataChange] = useState()
@@ -54,6 +58,18 @@ const Details = (props) =>
       }
     </div>
   </div>
+
+  <Nav className="mt-10" variant="tabs" defaultActiveKey="link-0">
+  <Nav.Item>
+    <Nav.Link href="link-0" onClick={()=>{controllersChange(false); clickTabChange(0)}}>Active</Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link eventKey="link-1" onClick={()=>{controllersChange(false); clickTabChange(1)}}>Option 2</Nav.Link>
+  </Nav.Item>
+</Nav>
+<CSSTransition in={controllers} classNames="wow" timeout={500}>
+<TabContent clickTab={clickTab} controllersChange={controllersChange}></TabContent>
+</CSSTransition>
 </div> 
   )
 }
@@ -63,6 +79,29 @@ const Inventory = (props) =>
   return(
     <p>재고: {props.inventory[0]}</p>
   )
+}
+
+
+const TabContent = (props) =>
+{
+
+ useEffect(()=>
+ {
+  props.controllersChange(true)
+ })
+
+ if(props.clickTab === 0)
+ {
+   return <div>0번째 내용 입니다</div>
+ }
+ if(props.clickTab === 1)
+ {
+   return <div>1번째 내용 입니다</div>
+ }
+ if(props.clickTab === 2)
+ {
+   return <div>2번째 내용 입니다</div>
+ }
 }
 
 export default Details
