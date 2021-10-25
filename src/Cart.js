@@ -24,7 +24,8 @@ const Cart = (props) =>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
                     <td>{item.quan}</td>
-                    <td><button onClick={()=>{ }}> + </button></td>
+                    <td><button onClick={()=>{props.dispatch({type:'add'})}}> + </button></td>
+                    <td><button onClick={()=>{props.dispatch({type:'remove'})}}> - </button></td>
                 </tr>
             )
         })

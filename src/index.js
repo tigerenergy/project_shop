@@ -7,13 +7,36 @@ import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 
-let store = createStore(()=>
-{
-  return[
-    {id: 0, name: '멋진기타', quan: 2},
-    {id: 1, name: '예쁜기타', quan: 5}
+
+const basicState = 
+  [
+      {id: 0, name: '멋진기타', quan: 2},
+      {id: 1, name: '예쁜기타', quan: 5},
+      {id: 2, name: '귀여운기타', quan: 6}
   ]
-})
+
+const reducer = (state = basicState , action) =>
+{  
+  if(action.type === 'add')
+  {
+    let copy = [...state]
+    copy[0].quan++
+    return copy
+  }
+  if(action.type === 'remove')
+  {
+    let copy = [...state]
+    copy[0].quan--
+    return copy
+  }
+  else
+  {
+    return state
+  }
+}
+
+const store = createStore(reducer)
+
 
 ReactDOM.render(
   <React.StrictMode>
