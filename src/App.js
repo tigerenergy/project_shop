@@ -3,6 +3,7 @@ import './App.css';
 import { Navbar, Container, Nav, NavDropdown, Button }  from 'react-bootstrap'
 import Data from './data'
 import Details from './Detail'
+import Cart from './Cart'
 import axios from 'axios'
 import { Link, Route, Switch } from 'react-router-dom'
 
@@ -72,6 +73,9 @@ function App() {
         <inventoryContext.Provider value={inventory}>
         <Route path="/detail/:id">
           <Details guitar={guitar} inventory={inventory} inventoryChange={inventoryChange}></Details>
+        </Route>
+        <Route path="/cart">
+          <Cart></Cart>
         </Route>
         </inventoryContext.Provider>
         </Switch> 
