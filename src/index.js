@@ -5,15 +5,33 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { combineReducers, createStore } from 'redux'
+
+const alertState = true
+
+const alertReducer = (state = alertState, action) =>
+{ 
+  if(action.type === 'close')
+  {
+    state = false
+    return state
+  }
+  else 
+  {
+    return state
+  }
+}
 
 
 const basicState = 
   [
-      {id: 0, name: '멋진기타', quan: 2},
-      {id: 1, name: '예쁜기타', quan: 5},
-      {id: 2, name: '귀여운기타', quan: 6}
+      {
+        id: 0, 
+        name: '멋진기타', 
+        quan: 2
+      }
   ]
+
 
 const reducer = (state = basicState , action) =>
 {  
@@ -35,7 +53,7 @@ const reducer = (state = basicState , action) =>
   }
 }
 
-const store = createStore(reducer)
+const store = createStore(combineReducers({reducer, alertReducer}))
 
 
 ReactDOM.render(
