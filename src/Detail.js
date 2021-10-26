@@ -3,7 +3,9 @@ import { useHistory, useParams } from 'react-router-dom'
 import { Nav }  from 'react-bootstrap'
 import './Detail.css'
 import {inventoryContext} from './App'
-import {CSSTransition} from 'react-transition-group';
+import {CSSTransition} from 'react-transition-group'
+import { connect } from 'react-redux'
+
 const Details = (props) =>
 { 
   useEffect(()=>
@@ -44,10 +46,16 @@ const Details = (props) =>
       <p>{findIndex.content}</p>
       <p>{findIndex.price}</p>
       <Inventory inventory={props.inventory}></Inventory>
+    
       <button className="btn btn-danger" onClick={()=>
-        {
-          props.inventoryChange([9,11,12])
-        }}>주문하기</button> 
+      {
+         props.inventoryChange([9,11,12])
+         props.dispatch({type:'addItem', payload: {id:2, name:'새로운 상품', quan: 1}})
+         history.push('/cart')
+
+      }}>주문하기</button>
+    
+    
       <button className="btn btn-primary" onClick={()=>{history.push('/')}}>뒤로가기</button>
       {
         alert === true
@@ -104,4 +112,16 @@ const TabContent = (props) =>
  }
 }
 
-export default Details
+
+
+
+const userDetail = (state) =>
+{
+    return {
+        state: state.reducer,
+        alertOpen : state.alertReducer
+    }
+}
+
+export default connect(userDetail)(Details)
+

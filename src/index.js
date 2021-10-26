@@ -41,10 +41,16 @@ const reducer = (state = basicState , action) =>
     copy[0].quan++
     return copy
   }
-  if(action.type === 'remove')
+  else if(action.type === 'remove')
   {
     let copy = [...state]
     copy[0].quan--
+    return copy
+  }
+  else if(action.type === 'addItem')
+  {
+    let copy = [...state]
+    copy.push(action.payload)
     return copy
   }
   else
