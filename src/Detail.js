@@ -13,7 +13,7 @@ const Details = (props) =>
     const time = setTimeout(()=>
     {
       alertChange(false)
-    },2000)
+    },1500)
     return ()=>
     {
       clearTimeout(time)
