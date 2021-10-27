@@ -50,7 +50,7 @@ const Details = (props) =>
       <button className="btn btn-danger" onClick={()=>
       {
          props.inventoryChange([9,11,12])
-         props.dispatch({type:'addItem', payload: {id:2, name:'새로운 상품', quan: 1}})
+         props.dispatch({type:'addItem', payload: {id: findIndex.id, name: findIndex.title, quan: 1}})
          history.push('/cart')
 
       }}>주문하기</button>

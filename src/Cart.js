@@ -29,8 +29,8 @@ const Cart = (props) =>
                     <td>{item.id}</td>
                     <td>{item.name}</td>
                     <td>{item.quan}</td>
-                    <button onClick={()=>{dispatch({type:'add'})}}>+</button>
-                    <button onClick={()=>{dispatch({type:'remove'})}}>-</button>
+                    <button onClick={()=>{dispatch({type:'add' , payload: item.id})}}>+</button>
+                    <button onClick={()=>{dispatch({type:'remove', payload: item.id})}}>-</button>
                 </tr>
             )
         })
@@ -49,15 +49,5 @@ const Cart = (props) =>
         </div>
             )
         }
-
-        // const userCart = (state) =>
-        // {
-        //     return {
-        //         state: state.reducer,
-        //         alertOpen : state.alertReducer
-        //     }
-        // }
-
-        // export default connect(userCart)(Cart)
 
         export default Cart

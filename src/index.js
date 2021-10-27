@@ -25,34 +25,54 @@ const alertReducer = (state = alertState, action) =>
 
 const basicState = 
   [
-      {
-        id: 0, 
-        name: '멋진기타', 
-        quan: 2
-      }
+      // {
+ 
+      //   quan: 2
+      // },
+      // {
+
+      //   quan: 2
+      // }
   ]
 
 
 const reducer = (state = basicState , action) =>
-{  
+{ 
+  let found = state.findIndex((item)=>
+  {
+    return item.id === action.payload.id 
+  })
+  
+  if(action.type === 'addItem')
+  { 
+
+    if(found >= 0)
+    {
+      let copy = [...state]
+      copy[found].quan++
+      return copy
+    }
+    else
+    {
+      let copy = [...state]
+      copy.push(action.payload)
+      return copy
+    }
+    
+  }
+
   if(action.type === 'add')
   {
     let copy = [...state]
-    copy[0].quan++
+    copy[action.payload].quan++
     return copy
   }
-  else if(action.type === 'remove')
+  if(action.type === 'remove')
   {
     let copy = [...state]
-    copy[0].quan--
+    copy[action.payload].quan--
     return copy
-  }
-  else if(action.type === 'addItem')
-  {
-    let copy = [...state]
-    copy.push(action.payload)
-    return copy
-  }
+  }  
   else
   {
     return state
