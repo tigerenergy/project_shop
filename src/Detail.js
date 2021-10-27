@@ -34,6 +34,16 @@ const Details = (props) =>
     return item.id == id
   })
 
+  useEffect( ()=>{
+    var arr = localStorage.getItem('watched');
+    arr = JSON.parse(arr);
+    
+    arr.push(id);
+    arr = new Set(arr);
+    arr = [...arr];
+    localStorage.setItem('watched', JSON.stringify(arr) );
+  
+  }, [] );
 
   return(
   <div className="container">
