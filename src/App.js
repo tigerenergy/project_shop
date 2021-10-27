@@ -1,11 +1,11 @@
-import React, { useState , useContext} from 'react'
+import React, { useState, useContext} from 'react'
 import './App.css';
 import { Navbar, Container, Nav, NavDropdown, Button }  from 'react-bootstrap'
 import Data from './data'
 import Details from './Detail'
 import Cart from './Cart'
 import axios from 'axios'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link, Route, Switch, useHistory } from 'react-router-dom'
 
 export let inventoryContext = React.createContext()
 
@@ -13,7 +13,7 @@ function App() {
 
   let [guitar , guitarChange] = useState(Data)
   let [inventory, inventoryChange] = useState([9,10,11])
-
+  let history = useHistory()
   return (
     <div className="App">
         <Navbar bg="light" expand="lg">
@@ -65,7 +65,7 @@ function App() {
                 guitarChange([...guitar , ...result.data])
               })
               .catch(()=>{
-                console.log('실패함zx')
+                alert('실패함')
               })
             }}>더보기</button>
         </div>
@@ -88,8 +88,10 @@ function App() {
   { 
 
     let inventory = useContext(inventoryContext)
+    let history = useHistory()
+
     return(
-          <div className="col-md-4">
+          <div className="col-md-4" onClick={()=>{ history.push('/detail/' + props.index)}}>
             <img src={props.guitar.src} height="70%" alt="팬더기타" />
             <h4>{props.guitar.title}</h4>
             <p>{props.guitar.content}</p>
